@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
 
 const AboutIntro = () => {
     return (
@@ -16,7 +17,7 @@ const AboutIntro = () => {
                 viewport={{ once: true, amount: 0.3 }}
             >
                 <Image
-                    src="/banners/2.jpg"
+                    src="/banners/8.jpg"
                     alt="image1"
                     fill
                     className="object-cover"
@@ -41,24 +42,30 @@ const AboutIntro = () => {
                 </h2>
 
                 {/* <div className="bg-gray-100 rounded-md p-4 border-b-4 border-orange-500 mb-4 py-6"> */}
-                    <p className="text-gray-500 text-lg">
-                        “I truly believe that when people come together
-                        with purpose, real change is not only possible, it’s inevitable.<span className="hidden md:block text-orange-500">~ZORAWAR SINGH, FOUNDER</span> <br/><span className="md:hidden text-orange-500">~ZORAWAR SINGH, FOUNDER</span>
-                    </p>
-                    {/* <p className="mt-2 text-orange-500 font-semibold">Zorawar Singh, President/ Chairman</p> */}
+                <p className="text-gray-500 text-lg">
+                    “I truly believe that when people come together
+                    with purpose, real change is not only possible, it’s inevitable.<span className="hidden md:block text-orange-500">~ZORAWAR SINGH, FOUNDER</span> <br /><span className="md:hidden text-orange-500">~ZORAWAR SINGH, FOUNDER</span>
+                </p>
+                {/* <p className="mt-2 text-orange-500 font-semibold">Zorawar Singh, President/ Chairman</p> */}
                 {/* </div> */}
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 my-6 md:my-0 md:mb-6 ">
                     <div className="bg-orange-50 rounded-lg px-6 py-4 flex flex-col items-center shadow-sm">
-                        <span className="text-4xl font-extrabold text-orange-500 mb-2">10,000+</span>
+                        <span className="text-4xl font-extrabold text-orange-500 mb-2">
+                            <CountUp end={10000} duration={3} separator="," />+
+                        </span>
                         <span className="text-gray-700 font-semibold text-center">Meals Provided to the Needy</span>
                     </div>
                     <div className="bg-orange-50 rounded-lg px-6 py-4 flex flex-col items-center shadow-sm">
-                        <span className="text-4xl font-extrabold text-orange-500 mb-2">500+</span>
+                        <span className="text-4xl font-extrabold text-orange-500 mb-2">
+                            <CountUp end={500} duration={3} separator="," />+
+                        </span>
                         <span className="text-gray-700 font-semibold text-center">Girls Supported for Marriage</span>
                     </div>
                     <div className="bg-orange-50 rounded-lg px-6 py-4 flex flex-col items-center shadow-sm">
-                        <span className="text-4xl font-extrabold text-orange-500 mb-2">2,000+</span>
+                        <span className="text-4xl font-extrabold text-orange-500 mb-2">
+                            <CountUp end={2000} duration={3} separator="," />+
+                        </span>
                         <span className="text-gray-700 font-semibold text-center">Trees Planted for a Greener Future</span>
                     </div>
                 </div>

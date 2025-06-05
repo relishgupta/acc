@@ -8,26 +8,26 @@ export default function CausesSection() {
       image: "/causes/1.jpg",
       description:
         "We aim to combat climate change and restore ecological balance through widespread tree plantation. Every tree planted is a step toward a greener, healthier tomorrow.",
-      href: "/services/architecture",
+      href: "/causes",
     },
     {
       title: "Dignified Marriages for Underprivileged Girls",
       image: "/causes/2.jpg",
       description:
         "Many families struggle to arrange basic necessities for their daughters' weddings. We provide essential ration and support to ensure these young women start their new lives with dignity and hope.",
-      href: "/services/interior-design",
+      href: "/causes",
     },
     {
-      title: "Say No to Drugs: Awareness Campaigns",
+      title: "Serving Food to Budha Amarnath Yatris & Tourists",
       image: "/causes/3.jpg",
       description:
-        "Addiction destroys lives silently. Our drug awareness programs in schools, colleges, and public areas aim to educate youth and communities about the dangers of substance abuse.",
-      href: "/services/construction-management",
+        "Every year, our NGO provides free meals to Budha Amarnath Yatris and tourists, ensuring their journey is comfortable and filled with care. We are committed to supporting pilgrims and visitors with warmth and hospitality.",
+      href: "/causes",
     },
   ];
 
   return (
-    <section className="max-w-screen mx-auto bg-white py-10 md:py-16 px-6 md:px-28">
+    <section className="max-w-screen mx-auto bg-white py-10 md:py-1 px-6 md:px-28">
       <div className="md:text-center mb-12">
         <motion.span
           className="bg-orange-100 text-orange-500 font-medium px-5 py-2 rounded-full "
@@ -58,14 +58,16 @@ export default function CausesSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
           >
-            <motion.img
-              src={service.image}
-              alt="service"
-              className="w-full h-64 object-cover"
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            />
+            <div className="w-full aspect-[3/2] overflow-hidden"> 
+              <motion.img
+                src={service.image}
+                alt="service"
+                className="w-full h-full object-cover"
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
             <div className="p-6 flex flex-col flex-1 h-full">
               <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">
                 {service.title}

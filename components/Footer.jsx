@@ -8,7 +8,6 @@ import {
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
 import { FiPhone } from "react-icons/fi";
 import Link from "next/link";
-
 export default function Footer() {
     return (
         <footer className="bg-[#021a1f] text-gray-300 px-6 md:px-28 py-12 md:pb-12 md:pt-20 text-md">
@@ -20,7 +19,7 @@ export default function Footer() {
                     <img
                         src="/logo.png"
                         alt="Anmol Cultural Club Logo"
-                        className="h-14 w-auto mb-3"
+                        className="h-12 md:h-14 w-auto mb-3"
                     />
                     <p className="mt-4 text-gray-400">
                         Anmol Cultural Club is a non-profit organization dedicated to empowering communities through cultural, educational, and social initiatives.
