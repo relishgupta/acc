@@ -89,8 +89,7 @@ export default function Footer() {
                             { href: "gallery", label: "Gallery" },
                             { href: "contact", label: "Contact us" },
                         ].map((link, idx) => (
-                            <li
-                            >
+                            <li key={link.href} >
                                 <Link href={link.href} className="hover:text-orange-500 flex items-center transition">
                                     {link.label}
                                 </Link>
@@ -106,7 +105,7 @@ export default function Footer() {
             >
                 <p>© <Link href="https://anmolculturalclub.in/" className="hover:text-orange-500 cursor-pointer">anmolculturalclub.in</Link>. All Rights Reserved.</p>
                 <p>
-                    Designed and Developed By <Link href="https://vyaparguruinfotech.in/" target="_blank" className="text-white hover:text-orange-500 cursor-pointer">Vyapar Guru Infotech Pvt. Ltd.</Link>
+                    Designed and Developed By <Link href="" target="_blank" className="text-white hover:text-orange-500 cursor-pointer">Relish Gupta</Link>
                 </p>
             </div>
         </footer>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Anmol Cultural Club",
+  title: "Anmol Cultural Club - A non-profit organization.",
   description: "Anmol Cultural Club",
 };
 

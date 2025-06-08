@@ -1,7 +1,7 @@
 export default function PageHeading({ title = "Page Title", breadcrumbs = [] }) {
   return (
     <div
-      className="relative w-full h-60 flex items-center justify-center bg-cover bg-center mt-16 md:mt-20"
+      className="relative w-full h-40 md:h-60 flex items-center justify-center bg-cover bg-center mt-16 md:mt-20"
       style={{
         backgroundImage:
           "linear-gradient(rgba(1, 39, 39, 0.8), rgba(1, 39, 39, 0.8)), url('/PageHeading.jpg')",
