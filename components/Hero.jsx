@@ -70,7 +70,7 @@ export default function Hero() {
           Changing Lives, One Act of Kindness at a Time
         </h1>
         <p className="mt-4 text-base md:text-lg text-gray-300">
-          Your support empowers lives and builds brighter futures—join us in creating lasting change.
+          Your support empowers lives and builds brighter futures — join us in creating lasting change.
         </p>
         <a
           href="/donate"

@@ -34,7 +34,7 @@ export default function Footer() {
                             <FaWhatsapp size={20} />
                         </Link>
                         <Link
-                            href="https://facebook.com/anmolculturalclub"
+                            href="https://facebook.com/anmolnewsindia"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-9 h-9 flex items-center justify-center border border-gray-400 text-gray-400 hover:text-white transition rounded"

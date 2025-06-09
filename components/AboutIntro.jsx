@@ -17,7 +17,7 @@ const AboutIntro = () => {
                 viewport={{ once: true, amount: 0.3 }}
             >
                 <Image
-                    src="/banners/8.jpg"
+                    src="/banners/12.jpg"
                     alt="image1"
                     fill
                     className="object-cover"

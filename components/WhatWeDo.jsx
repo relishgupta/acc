@@ -42,7 +42,7 @@ const WhatWeDoSection = () => {
     <section className="py-20 md:py-20 bg-white px-6 md:px-4 md:pb-24">
       <div className="md:text-center mb-12">
         <motion.span
-          className="bg-orange-100 text-orange-500 font-medium px-5 py-2 rounded-full "
+          className="bg-orange-100 text-orange-500 font-medium px-5 py-3 rounded-full "
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

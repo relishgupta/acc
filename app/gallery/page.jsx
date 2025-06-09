@@ -22,15 +22,68 @@ const GalleryPage = () => {
   const causes = [
     {
       title: 'Plantation Drive',
-      images: ['/causes/plant1.jpg', '/causes/plant2.jpg'],
+      images: [
+        '/causes/plantation/1.jpg',
+        '/causes/plantation/2.jpg',
+        '/causes/plantation/3.jpg',
+        '/causes/plantation/4.jpg',
+        '/causes/plantation/5.jpg',
+        '/causes/plantation/6.jpg',
+        '/causes/plantation/7.jpg',
+        '/causes/plantation/8.jpg',
+        '/causes/plantation/9.jpg',
+        '/causes/plantation/10.jpg',
+        '/causes/plantation/11.jpg',
+        '/causes/plantation/12.jpg',
+        '/causes/plantation/13.jpg',
+        '/causes/plantation/14.jpg',
+        '/causes/plantation/15.jpg',
+        '/causes/plantation/16.jpg',
+        '/causes/plantation/17.jpg',
+      ],
     },
     {
-      title: 'Food Distribution',
-      images: ['/causes/food1.jpg', '/causes/food2.jpg'],
+      title: 'Forest Fire Response',
+      images: [
+        '/causes/forestfire/1.jpg',
+        '/causes/forestfire/2.jpg',
+        '/causes/forestfire/3.jpg',
+        '/causes/forestfire/4.jpg',
+        '/causes/forestfire/5.jpg',
+      ],
+    },
+    {
+      title: 'Ration Distribution',
+      images: [
+        '/causes/ration/1.jpg',
+        '/causes/ration/2.jpg',
+        '/causes/ration/3.jpg',
+        '/causes/ration/4.jpg',
+        '/causes/ration/5.jpg',
+        '/causes/ration/6.jpg',
+        '/causes/ration/7.jpg',
+        '/causes/ration/8.jpg',
+        '/causes/ration/9.jpg',
+        '/causes/ration/10.jpg',
+      ],
     },
     {
       title: 'Blood Donation Camp',
-      images: ['/causes/blood1.jpg', '/causes/blood2.jpg'],
+      images: ['/causes/bloodcamp/1.jpg', '/causes/bloodcamp/2.jpg'],
+    },
+    {
+      title: 'Food for All',
+      images: [
+        '/causes/food/1.jpg',
+        '/causes/food/2.jpg',
+        '/causes/food/3.jpg',
+        '/causes/food/4.jpg',
+        '/causes/food/5.jpg',
+        '/causes/food/6.jpg',
+        '/causes/food/7.jpg',
+        '/causes/food/8.jpg',
+        '/causes/food/9.jpg',
+      ],
     },
   ];
 
@@ -41,11 +94,26 @@ const GalleryPage = () => {
   };
 
   const renderImages = (images) => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+    <motion.div
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.08,
+          },
+        },
+      }}
+    >
       {images.map((src, i) => (
         <motion.div
           key={i}
           whileHover={{ scale: 1.03 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: i * 0.08 }}
           className="overflow-hidden shadow-lg cursor-pointer"
           onClick={() => openLightbox(images, i)}
         >
@@ -60,8 +128,8 @@ const GalleryPage = () => {
           </div>
         </motion.div>
       ))}
-    </div>
-  );
+    </motion.div>
+  )
 
   return (
     <>
@@ -92,7 +160,7 @@ const GalleryPage = () => {
             <div className="space-y-12">
               {causes.map((cause, index) => (
                 <div key={index}>
-                  <h2 className="text-xl font-semibold text-gray-700 ">{cause.title}</h2>
+                  <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight md:text-center">{cause.title}</h2>
                   {renderImages(cause.images)}
                 </div>
               ))}

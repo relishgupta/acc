@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import GoToTop from "@/components/GoToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Anmol Cultural Club - A non-profit organization.",
+  title: "Anmol Cultural Club - A Non-Profit Organization.",
   description: "Anmol Cultural Club",
 };
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar/>
+        <GoToTop/>
         {children}
         <Footer/>
         <ScrollToTop/>
