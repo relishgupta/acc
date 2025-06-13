@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { motion } from 'framer-motion';
 
-export default function CausesSection() {
+export default function HomeCauses() {
   const services = [
     {
       title: "Plantation Drives",

@@ -21,13 +21,13 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="fixed top-0 left-0 w-full bg-[#021a1f] text-white px-6 md:px-12 py-3 md:py-3 flex justify-between items-center shadow-lg z-50"
+            className="fixed top-0 left-0 w-full bg-[#021a1f] text-white px-6 md:px-12 py-3 md:py-2 flex justify-between items-center shadow-lg z-50"
         >
             <Link href="/" className="flex items-center space-x-2">
                 <motion.img
                     src="/logo.png" 
                     alt="Logo"
-                    className="h-12 w-auto md:h-14"
+                    className="h-12 w-auto md:h-16"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.6, type: "spring" }}

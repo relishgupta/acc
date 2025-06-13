@@ -4,6 +4,7 @@ import PageHeading from "@/components/PageHeading";
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
 
 export default function DonationSection() {
     const [selectedAmount, setSelectedAmount] = useState(1000);
@@ -40,15 +41,37 @@ export default function DonationSection() {
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10 px-6 md:px-28 py-16 md:py-28 bg-white max-w-screen mx-auto">
                 {/* Left Section */}
                 <div className="max-w-2xl">
-                    <button className="bg-orange-100 text-orange-500 font-medium px-5 py-2 rounded-full mb-6">
+                    <button className="bg-orange-100 text-orange-500 font-medium px-5 py-2 rounded-full mb-10">
                         Donate Now
                     </button>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
                         Your Support Makes a Difference
                     </h2>
                     <p className="text-gray-500 text-lg leading-relaxed">
-                        Every contribution helps us empower communities and bring positive change. Your donation enables us to organize cultural, educational, and social initiatives for those in need. Join us in making a meaningful impact—no amount is too small!
+                        Your donation enables us to organize cultural, educational, and social initiatives for those in need. Join us in making a meaningful impact — no amount is too small!
                     </p>
+
+                    {/* Impact Stats from AboutIntro */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8">
+                        <div className="bg-orange-50 rounded-lg px-6 py-4 flex flex-col items-center shadow-sm">
+                            <span className="text-4xl font-extrabold text-orange-500 mb-2">
+                                <CountUp end={10000} duration={3} separator="," />+
+                            </span>
+                            <span className="text-gray-700 font-semibold text-center">Meals Provided to the Needy</span>
+                        </div>
+                        <div className="bg-orange-50 rounded-lg px-6 py-4 flex flex-col items-center shadow-sm">
+                            <span className="text-4xl font-extrabold text-orange-500 mb-2">
+                                <CountUp end={500} duration={3} separator="," />+
+                            </span>
+                            <span className="text-gray-700 font-semibold text-center">Girls Supported for Marriage</span>
+                        </div>
+                        <div className="bg-orange-50 rounded-lg px-6 py-4 flex flex-col items-center shadow-sm">
+                            <span className="text-4xl font-extrabold text-orange-500 mb-2">
+                                <CountUp end={2000} duration={3} separator="," />+
+                            </span>
+                            <span className="text-gray-700 font-semibold text-center">Trees Planted for a Greener Future</span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Right Section - Donation Box */}
@@ -129,6 +152,9 @@ export default function DonationSection() {
                     <button className="bg-orange-500 hover:bg-orange-50 border-2 border-orange-500 text-white hover:text-orange-500 font-semibold py-4 w-full flex justify-center items-center gap-2 rounded">
                         Donate Now <FaArrowRight className="w-4 h-4" />
                     </button>
+                    <div className="mt-3 text-orange-600 py-2 rounded text-sm font-semibold">
+                        Save tax on your donation. Get 50% tax exemption under section 80G, SRO of the Income Tax Act-1961.
+                    </div>
                 </motion.div>
             </div>
         </>
