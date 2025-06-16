@@ -35,7 +35,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
                 {navLinks.map((link) => (
                     <Link
                         key={link.name}
@@ -56,7 +56,7 @@ export default function Navbar() {
 
             {/* Hamburger Icon */}
             <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50"
+                className="lg:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50"
                 onClick={() => setMenuOpen((prev) => !prev)}
                 aria-label="Toggle menu"
             >

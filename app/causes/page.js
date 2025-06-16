@@ -1,6 +1,7 @@
 "use client";
 import Causes from "@/components/Causes";
 import PageHeading from "@/components/PageHeading";
+import { motion } from "framer-motion";
 
 const causes = [
   {
@@ -10,10 +11,10 @@ const causes = [
     donationText: "Support us in making the Earth greener!",
     images: [
       "/causes/plantation/1.jpg",
-      "/causes/plantation/2.jpg",
       "/causes/plantation/3.jpg",
-      "/causes/plantation/4.jpg",
-      "/causes/plantation/5.jpg",
+      "/causes/plantation/9.jpg",
+      "/causes/plantation/11.jpg",
+      "/causes/plantation/15.jpg",
     ],
   },
   {
@@ -23,10 +24,10 @@ const causes = [
     donationText: "Help us create new beginnings for these girls.",
     images: [
       "/causes/ration/1.jpg",
-      "/causes/ration/2.jpg",
-      "/causes/ration/3.jpg",
-      "/causes/ration/4.jpg",
-      "/causes/ration/5.jpg",
+      "/causes/ration/6.jpg",
+      "/causes/ration/7.jpg",
+      "/causes/ration/8.jpg",
+      "/causes/ration/10.jpg",
     ],
   },
   {
@@ -37,9 +38,6 @@ const causes = [
     images: [
       "/causes/bloodcamp/1.jpg",
       "/causes/bloodcamp/2.jpg",
-      "/causes/bloodcamp/3.jpg",
-      "/causes/bloodcamp/4.jpg",
-      "/causes/bloodcamp/5.jpg",
     ],
   },
   {
@@ -62,8 +60,8 @@ const causes = [
     donationText: "Feed a soul, earn a blessing.",
     images: [
       "/causes/food/1.jpg",
-      "/causes/food/2.jpg",
       "/causes/food/3.jpg",
+      "/causes/food/9.jpg",
       "/causes/food/4.jpg",
       "/causes/food/5.jpg",
     ],
@@ -76,13 +74,20 @@ export default function CausesPage() {
       <PageHeading title="Causes" breadcrumbs={["Causes"]} />
       <div className="bg-white">
         {causes.map((cause, index) => (
-          <Causes
+          <motion.div
             key={index}
-            title={cause.title}
-            description={cause.description}
-            donationText={cause.donationText}
-            images={cause.images}
-          />
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Causes
+              title={cause.title}
+              description={cause.description}
+              donationText={cause.donationText}
+              images={cause.images}
+            />
+          </motion.div>
         ))}
       </div>
     </>

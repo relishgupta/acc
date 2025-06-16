@@ -12,14 +12,14 @@ export default function HomeCauses() {
     },
     {
       title: "Dignified Marriages for Underprivileged Girls",
-      image: "/causes/ration/2.jpg",
+      image: "/causes/ration/6.jpg",
       description:
         "Many families struggle to arrange basic necessities for their daughters' weddings. We provide essential ration and support to ensure these young women start their new lives with dignity and hope.",
       href: "/causes",
     },
     {
       title: "Serving Food to Budha Amarnath Yatris & Tourists",
-      image: "/causes/food/3.jpg",
+      image: "/causes/food/1.jpg",
       description:
         "Every year, our NGO provides free meals to Budha Amarnath Yatris and tourists, ensuring their journey is comfortable and filled with care. We are committed to supporting pilgrims and visitors with warmth and hospitality.",
       href: "/causes",

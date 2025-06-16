@@ -39,7 +39,7 @@ const cardVariants = {
 
 const WhatWeDoSection = () => {
   return (
-    <section className="py-20 md:py-20 bg-white px-6 md:px-4 md:pb-24">
+    <section className="py-20 md:pt-20 md:pb-0 bg-white px-6 md:px-4 ">
       <div className="md:text-center mb-12">
         <motion.span
           className="bg-orange-100 text-orange-500 font-medium px-5 py-3 rounded-full "

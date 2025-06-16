@@ -20,23 +20,25 @@ export default function Causes({ title, description, donationText, images }) {
 
     return (
         <section className="min-h-screen px-6 md:px-20 py-10 bg-white flex flex-col items-center justify-center text-black">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight text-left md:text-center">{title}</h2>
-            <p className="text-gray-600 text-lg max-w-4xl mb-6 text-left md:text-center">{description}</p>
-            <p className="text-md font-semibold mb-4 text-orange-600 text-left md:text-center">{donationText}</p>
+            <div>
+
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight md:text-center">{title}</h2>
+            <p className="text-gray-600 text-lg max-w-4xl mb-6 md:text-center">{description}</p>
+            <p className="text-md font-semibold mb-4 text-orange-600 md:text-center">{donationText}</p>
             <Link
                 href="/donate"
-                className="bg-orange-500 text-white px-6 py-3 rounded-md text-left md:text-center block w-fit md:mx-auto"
-            >
+                className="bg-orange-500 text-white px-6 py-3 rounded-md md:text-center block w-fit md:mx-auto"
+                >
                 Donate Now
             </Link>
+                </div>
             {/* Desktop Layout */}
             {!isMobile && (
                 <div className="mt-12 flex gap-4 justify-center items-center">
                     {images.map((src, idx) => (
                         <div
                             key={idx}
-                            className={`relative transition-all duration-500 hover:scale-105 hover:z-10 ${idx === 2 ? "z-10 scale-105" : "z-0 scale-95"
-                                } aspect-[3/4] flex-1 min-w-[250px] max-w-xs overflow-hidden shadow-xl rounded-lg`}
+                            className="relative transition-all duration-500 hover:scale-105 hover:z-10 scale-95 aspect-[3/4] flex-1 min-w-[250px] max-w-xs overflow-hidden shadow-xl rounded-lg"
                         >
                             <Image
                                 src={src}
@@ -53,7 +55,7 @@ export default function Causes({ title, description, donationText, images }) {
                 <div className="mt-10 w-full max-w-md">
                     <Swiper
                         modules={[Navigation]}
-                        spaceBetween={10}
+                        spaceBetween={12}
                         slidesPerView={1.5}
                         navigation
                         centeredSlides
@@ -64,7 +66,7 @@ export default function Causes({ title, description, donationText, images }) {
                                 <div className="relative aspect-[3/5] w-full rounded-lg overflow-hidden shadow-xl">
                                     <Image
                                         src={src}
-                                        alt={`mobile-cause-${idx}`}
+                                        alt={`cause-${idx}`}
                                         fill
                                         className="object-cover"
                                     />
