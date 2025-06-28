@@ -44,7 +44,7 @@ const AboutIntro = () => {
                 {/* <div className="bg-gray-100 rounded-md p-4 border-b-4 border-orange-500 mb-4 py-6"> */}
                 <p className="text-gray-600 text-lg">
                     “I truly believe that when people come together
-                    with purpose, real change is not only possible, it’s inevitable.<span className="hidden md:block text-orange-500">~ZORAWAR SINGH, FOUNDER</span> <br /><span className="md:hidden text-orange-500">~ZORAWAR SINGH, FOUNDER</span>
+                    with purpose, real change is not only possible, it’s inevitable.<span className="hidden md:block text-orange-500">~Zorawar Singh, President/Chairman</span> <br /><span className="md:hidden text-orange-500">~ZORAWAR SINGH, FOUNDER</span>
                 </p>
                 {/* <p className="mt-2 text-orange-500 font-semibold">Zorawar Singh, President/ Chairman</p> */}
                 {/* </div> */}
