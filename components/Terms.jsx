@@ -4,7 +4,7 @@ const TermsConditions = () => {
   return (
     <div className="container mx-auto px-6 lg:px-40 py-12 pt-28 bg-white">
       <div className="bg-white shadow-xl p-6 lg:p-10">
-        <h1 className="text-3xl font-bold mb-8 text-gray-900">Terms and Conditions</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Terms and Conditions</h1>
 
         <div className="text-gray-900 space-y-8">
           <p>
