@@ -105,7 +105,7 @@ export default function Footer() {
             >
                 <p>© <Link href="https://anmolculturalclub.in/" className="hover:text-orange-500 cursor-pointer">anmolculturalclub.in</Link>. All Rights Reserved.</p>
                 <p>
-                    Designed and Developed By <Link href="" target="_blank" className="text-white hover:text-orange-500 cursor-pointer">Relish Gupta</Link>
+                    Designed and Developed By <Link href="https://www.linkedin.com/in/relish-gupta-165692234/" target="_blank" className="text-white hover:text-orange-500 cursor-pointer">Relish Gupta</Link>
                 </p>
             </div>
         </footer>
