@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import GoToTop from "@/components/GoToTop";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

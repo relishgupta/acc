@@ -27,7 +27,7 @@ export default function Navbar() {
                 <motion.img
                     src="/logo.png" 
                     alt="Logo"
-                    className="h-12 w-auto md:h-16"
+                    className="h-16 w-auto md:h-16"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.6, type: "spring" }}
