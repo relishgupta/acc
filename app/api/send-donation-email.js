@@ -5,7 +5,6 @@ export default async function handler(req, res) {
 
   const { name, email, amount, paymentId } = req.body;
 
-  // Configure your SMTP transporter
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
 
   const mailOptions = {
     from: process.env.OWNER_EMAIL,
-    to: process.env.OWNER_EMAIL, // Owner's email
+    to: process.env.OWNER_EMAIL, 
     subject: "New Donation Received",
     text: `You got a donation of Rs ${amount} from ${name} (${email}). Payment ID: ${paymentId}`,
   };

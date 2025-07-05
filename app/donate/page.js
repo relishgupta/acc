@@ -1,19 +1,139 @@
 "use client"
 
 import PageHeading from "@/components/PageHeading";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
+
+function loadRazorpayScript(src) {
+    return new Promise((resolve) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+            resolve(true);
+            return;
+        }
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = () => resolve(true);
+        script.onerror = () => resolve(false);
+        document.body.appendChild(script);
+    });
+}
 
 export default function DonationSection() {
     const [selectedAmount, setSelectedAmount] = useState(1000);
     const [manualAmount, setManualAmount] = useState("");
     const [manualFocused, setManualFocused] = useState(false);
 
-    // New state for input focus
+    const [showThankYou, setShowThankYou] = useState(false);
+    const nameRef = useRef();
+    const emailRef = useRef();
+
     const [nameFocused, setNameFocused] = useState(false);
     const [emailFocused, setEmailFocused] = useState(false);
+
+    // Validation states
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [formError, setFormError] = useState("");
+
+    // Reset form after successful payment and when user comes back
+    useEffect(() => {
+        if (!showThankYou) {
+            setManualAmount("");
+            setSelectedAmount(1000);
+            if (nameRef.current) nameRef.current.value = "";
+            if (emailRef.current) emailRef.current.value = "";
+            setNameError("");
+            setEmailError("");
+            setFormError("");
+        }
+    }, [showThankYou]);
+
+    const validate = () => {
+        let valid = true;
+        setNameError("");
+        setEmailError("");
+        setFormError("");
+
+        const nameValue = nameRef.current?.value?.trim() || "";
+        const emailValue = emailRef.current?.value?.trim() || "";
+
+        if (!nameValue) {
+            setNameError("Name is required.");
+            valid = false;
+        } else if (!/^[A-Za-z\s]+$/.test(nameValue)) {
+            setNameError("Name must contain only letters.");
+            valid = false;
+        }
+
+        if (!emailValue) {
+            setEmailError("Email is required.");
+            valid = false;
+        } else if (
+            !/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(emailValue)
+        ) {
+            setEmailError("Enter a valid Gmail address (e.g., relishgupta@gmail.com).");
+            valid = false;
+        }
+
+        if (!valid) setFormError("Please fill all the fields.");
+        return valid;
+    };
+
+    const getAmount = () => {
+        if (manualAmount) return manualAmount;
+        if (selectedAmount) return selectedAmount;
+        return 0;
+    };
+
+    const handleDonate = async () => {
+        if (!validate()) return;
+
+        const amount = getAmount();
+        if (!amount) {
+            setFormError("Please fill all the fields.");
+            return;
+        }
+
+        const res = await loadRazorpayScript("https://checkout.razorpay.com/v1/checkout.js");
+        if (!res) {
+            alert("Razorpay SDK failed to load. Are you online?");
+            return;
+        }
+
+        // 1. Create Razorpay order
+        const { data: order } = await axios.post("/api/razorpay", { amount });
+
+        // 2. Open Razorpay checkout
+        const options = {
+            key: process.env.RAZORPAY_KEY_ID,
+            amount: order.amount,
+            currency: order.currency,
+            name: "Anmol Cultural Club",
+            description: "Donation",
+            order_id: order.id,
+            handler: async function (response) {
+                setShowThankYou(true); 
+
+                axios.post("/api/send-donation-email", {
+                    name: nameRef.current.value,
+                    email: emailRef.current.value,
+                    amount,
+                    paymentId: response.razorpay_payment_id,
+                });
+            },
+            prefill: {
+                name: nameRef.current.value,
+                email: emailRef.current.value,
+            },
+            theme: { color: "#f97316" },
+        };
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+    };
 
     const handleAmountClick = (amount) => {
         setSelectedAmount(amount);
@@ -82,19 +202,29 @@ export default function DonationSection() {
                     className="bg-orange-50 p-4 md:p-8 shadow-md w-full max-w-lg"
                 >
                     <input
+                        ref={nameRef}
                         type="text"
                         placeholder={nameFocused ? "" : "Your Name"}
                         className={`w-full mb-4 px-4 py-3 rounded bg-white placeholder-gray-300 text-black outline-none text-lg transition focus:ring focus:ring-orange-500 ${nameFocused ? "ring-2 ring-orange-500" : ""}`}
                         onFocus={() => setNameFocused(true)}
                         onBlur={(e) => setNameFocused(e.target.value === "" ? false : true)}
                     />
+                    {/* Name error */}
+                    {nameError && (
+                        <div className="mb-3 text-red-600 text-sm">{nameError}</div>
+                    )}
                     <input
+                        ref={emailRef}
                         type="email"
                         placeholder={emailFocused ? "" : "Your Email"}
                         className={`w-full mb-4 px-4 py-3 rounded bg-white placeholder-gray-300 text-black outline-none text-lg transition focus:ring focus:ring-orange-500 ${emailFocused ? "ring-2 ring-orange-500" : ""}`}
                         onFocus={() => setEmailFocused(true)}
                         onBlur={(e) => setEmailFocused(e.target.value === "" ? false : true)}
                     />
+                    {/* Email error */}
+                    {emailError && (
+                        <div className="mb-3 text-red-600 text-sm">{emailError}</div>
+                    )}
 
                     {/* Manual Amount Field */}
                     <div className="relative mb-6">
@@ -149,7 +279,10 @@ export default function DonationSection() {
                     </div>
 
                     {/* Donate Button */}
-                    <button className="bg-orange-500 hover:bg-orange-50 border-2 border-orange-500 text-white hover:text-orange-500 font-semibold py-4 w-full flex justify-center items-center gap-2 rounded">
+                    <button className="bg-orange-500 hover:bg-orange-50 border-2 border-orange-500 text-white hover:text-orange-500 font-semibold py-4 w-full flex justify-center items-center gap-2 rounded"
+                        onClick={handleDonate}
+                        type="button"
+                    >
                         Donate Now <FaArrowRight className="w-4 h-4" />
                     </button>
                     <div className="mt-3 text-orange-600 py-2 rounded text-sm font-semibold">
@@ -157,6 +290,20 @@ export default function DonationSection() {
                     </div>
                 </motion.div>
             </div>
+            {showThankYou && (
+                <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50 z-50">
+                    <div className="bg-white w-11/12 max-w-xs md:max-w-md p-6 md:p-8 md:py-10 rounded shadow-lg text-center text-gray-900">
+                        <h2 className="text-2xl font-bold mb-4">Thank You!</h2>
+                        <p>Your donation is successful. We appreciate your support!</p>
+                        <button
+                            className="mt-4 px-6 py-2 cursor-pointer bg-orange-500 text-white rounded"
+                            onClick={() => setShowThankYou(false)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

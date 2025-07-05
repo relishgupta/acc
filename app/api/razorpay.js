@@ -1,9 +1,7 @@
 import Razorpay from "razorpay";
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).end();
-
-  const { amount } = req.body;
+export async function POST(req) {
+  const { amount } = await req.json();
 
   const razorpay = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
@@ -18,8 +16,8 @@ export default async function handler(req, res) {
 
   try {
     const order = await razorpay.orders.create(options);
-    res.status(200).json(order);
+    return Response.json(order);
   } catch (err) {
-    res.status(500).json({ error: "Error creating Razorpay order" });
+    return Response.json({ error: "Error creating Razorpay order" }, { status: 500 });
   }
 }
